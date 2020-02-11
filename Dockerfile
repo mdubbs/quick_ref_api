@@ -3,11 +3,6 @@ WORKDIR /app
 
 FROM golang:1.13-alpine as build
 WORKDIR /src
-RUN apk add --update \
-    curl \
-    bash \
-    && rm -rf /var/cache/apk/*
-RUN curl -sL https://tools.circleci.foc.zone/install-certs | bash -
 COPY . .
 RUN GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" main.go
 
