@@ -19,6 +19,7 @@ type baseResponse struct {
 
 func ping(w http.ResponseWriter, _ *http.Request) {
 	blah, _ := json.Marshal(&baseResponse{Message:"pong"})
+	w.Header().Add("Content-Type", "application/json")
 	_, _ = fmt.Fprintf(w, string(blah))
 }
 
@@ -33,7 +34,8 @@ func headers(w http.ResponseWriter, req *http.Request) {
 		Headers: headerMap,
 		Message: "hi",
 	})
-	fmt.Fprintf(w, string(blah))
+	w.Header().Add("Content-Type", "application/json")
+	_, _ = fmt.Fprintf(w, string(blah))
 }
 
 func main() {
