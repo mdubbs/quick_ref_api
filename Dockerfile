@@ -14,4 +14,4 @@ RUN GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" main.go
 FROM base as final
 WORKDIR /app
 COPY --from=build /src/main .
-ENTRYPOINT["./main"]
+CMD /app/main
