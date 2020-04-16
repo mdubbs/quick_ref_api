@@ -39,10 +39,10 @@ func headers(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", ping)
 	http.HandleFunc("/ping", ping)
 	http.HandleFunc("/health", ping)
 	http.HandleFunc("/headers", headers)
+	http.HandleFunc("/", ping)
 
 	port := os.Getenv("PORT")
 	if len(port) == 0 {
